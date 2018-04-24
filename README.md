@@ -1,11 +1,18 @@
-# maven-repository
+# Maven Repository
 This repository is a collection of artifacts with the gov.cdc group id for use in Java projects through the Maven build tool.
 
-## ----- Start of respository specific READ ME -----
-### This repository specific READ ME instructions go here
+## Usage
+Add this line into your `pom.xml` to start using `gov.cdc` dependencies.
 
-Replace everything within this section demarcated with “-----“ with material appropriate to your repo that is useful to your developers and users like installation steps, user guide etc.
-## ----- End of respository specific READ ME -----
+```
+<!-- add GitHub CDCgov to repositories -->
+<repositories>
+  <repository>
+    <id>github-cdcgov</id>
+    <url>https://github.com/CDCgov/maven-repository/raw/master/</url>
+  </repository>
+</repositories>
+```
   
 ## Public Domain
 This repository constitutes a work of the United States Government and is not
