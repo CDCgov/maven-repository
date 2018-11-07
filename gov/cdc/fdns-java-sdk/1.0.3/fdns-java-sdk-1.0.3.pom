@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.cdc</groupId>
+	<artifactId>fdns-java-sdk</artifactId>
+	<version>1.0.3</version>
+	<packaging>jar</packaging>
+	
+	<name>FDNS Java SDK</name>
+	<description>This project contains helpers to easily connect with CDC Foundation Services.</description>
+	<url>https://github.com/CDCgov/fdns-java-sdk</url>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<issueManagement>
+		<url>https://github.com/CDCgov/fdns-java-sdk/issues</url>
+		<system>GitHub Issues</system>
+	</issueManagement>
+
+	<scm>
+		<url>https://github.com/CDCgov/fdns-java-sdk</url>
+		<connection>scm:git:git://github.com/CDCgov/fdns-java-sdk.git</connection>
+		<developerConnection>scm:git:git@github.com:CDCgov/fdns-java-sdk.git</developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>bchevallereau</id>
+			<name>Ben Chevallereau</name>
+			<email>benjamin.chevallereau@gmail.com</email>
+			<url>https://www.linkedin.com/in/bchevallereau/</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>drewry</id>
+			<name>Drew Morris</name>
+			<email>dhmorris@gmail.com</email>
+			<url>https://github.com/drewry</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<sonar.language>java</sonar.language>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180813</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>5.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.7</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver</artifactId>
+			<version>3.6.4</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- OWASP dependency check, looks for known vulnerabilities in our dependent packages -->
+			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>3.3.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<environmentVariables>
+						<HL7_UTILS_URL>http://localhost:8080</HL7_UTILS_URL>
+						<CDA_UTILS_URL>http://localhost:8081</CDA_UTILS_URL>
+						<STORAGE_URL>http://localhost:8082</STORAGE_URL>
+						<OBJECT_URL>http://localhost:8083</OBJECT_URL>
+						<INDEXING_URL>http://localhost:8084</INDEXING_URL>
+					</environmentVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
